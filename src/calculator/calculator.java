@@ -7,7 +7,7 @@ package calculator;
 
 /**
  *
- * @author resul
+ * @author resul ucar
  */
 import javax.swing.*;
 import java.lang.Math;
@@ -139,6 +139,11 @@ public class calculator extends javax.swing.JFrame {
         });
 
         jButtonPM.setText("+/-");
+        jButtonPM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPMActionPerformed(evt);
+            }
+        });
 
         jButtonPlus.setText("+");
         jButtonPlus.addActionListener(new java.awt.event.ActionListener() {
@@ -328,7 +333,33 @@ System.exit(0);    }//GEN-LAST:event_jMenuItem1ActionPerformed
     }//GEN-LAST:event_jButtonPlusActionPerformed
 
     private void jButtonEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEqualsActionPerformed
-        
+        try{
+        n2= Double.parseDouble(Display.getText());
+        }catch(Exception E){
+            n2=0;
+        }
+       
+        if(operation.equals("+")){
+            answer =n1+n2;
+        }
+        if(operation.equals("-")){
+            answer =n1-n2;
+        }
+        if(operation.equals("*")){
+            answer =n1*n2;
+        }
+        if(operation.equals("/")){
+            answer =n1/n2;
+        }
+        if(operation.equals("%")){
+            answer =n1%n2;
+        }
+        if(operation.equals("sqrt")){
+            answer = Math.sqrt(n1);
+            
+        }
+        Display.setText(answer+" ");
+
     }//GEN-LAST:event_jButtonEqualsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -416,6 +447,14 @@ System.exit(0);    }//GEN-LAST:event_jMenuItem1ActionPerformed
         String number = Display.getText()+jButtonDot.getText();
         Display.setText(number);
     }//GEN-LAST:event_jButtonDotActionPerformed
+
+    private void jButtonPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPMActionPerformed
+       n1= Double.parseDouble(Display.getText());
+       n1=n1*(-1);
+       String number = Double.toString(n1);
+       Display.setText(number);
+        
+    }//GEN-LAST:event_jButtonPMActionPerformed
 
     /**
      * @param args the command line arguments
